@@ -19,9 +19,15 @@ spec:
         name: result
         env:
           - name: DB_USER
-            value: postgres
+            valueFrom:
+              secretKeyRef:
+                name: result-secret
+                key: dbuser
           - name: DB_PASSWORD
-            value: postgres
+            valueFrom:
+              secretKeyRef:
+                name: result-secret
+                key: dbpassword
           - name: DB_SERVER
             value: db
         ports:
